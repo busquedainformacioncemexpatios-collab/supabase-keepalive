@@ -2,18 +2,16 @@ name: Keep Supabase Awake
 
 on:
   schedule:
-    - cron: "0 */3 * * *"   # Ejecuta cada 3 horas
-  workflow_dispatch:        # Permite ejecutarlo manualmente
+    - cron: "0 */6 * * *"   # Ejecutar cada 6 horas
+  workflow_dispatch:        # Permite ejecutarlo manualmente también
 
 jobs:
   keepalive:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Hacer ping a Supabase para evitar suspensión
+      - name: Wake Supabase
         run: |
-          echo "Haciendo ping a Supabase..."
-          curl -s \
-            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rcnJ5d3Fma3RlaWptaHZmcXRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MzgwODYsImV4cCI6MjA3MDQxNDA4Nn0.XxCKt8DLGaZBvlZOvmsRzS-0f28QrXFqqm530-0rJNg" \
-            -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rcnJ5d3Fma3RlaWptaHZmcXRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MzgwODYsImV4cCI6MjA3MDQxNDA4Nn0.XxCKt8DLGaZBvlZOvmsRzS-0f28QrXFqqm530-0rJNg" \
-            "https://mkrrywqfkteijmhvfqtf.supabase.co/rest/v1/?limit=1"
+          curl -I "https://mkrrywqfkteijmhvfqtf.supabase.co" \
+          -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rcnJ5d3Fma3RlaWptaHZmcXRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MzgwODYsImV4cCI6MjA3MDQxNDA4Nn0.XxCKt8DLGaZBvlZOvmsRzS-0f28QrXFqqm530-0rJNg"
+
