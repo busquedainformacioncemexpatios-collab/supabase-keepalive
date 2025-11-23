@@ -2,7 +2,7 @@ name: Keep Supabase Awake (2 Projects)
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # Ejecutar cada 6 horas
+    - cron: "0 */3 * * *"   # Ejecutar cada 3 horas
   workflow_dispatch:
 
 jobs:
