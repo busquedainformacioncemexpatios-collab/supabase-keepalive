@@ -1,17 +1,21 @@
-name: Keep Supabase Awake
+name: Keep Supabase Awake (2 Projects)
 
 on:
   schedule:
     - cron: "0 */6 * * *"   # Ejecutar cada 6 horas
-  workflow_dispatch:        # Permite ejecutarlo manualmente también
+  workflow_dispatch:
 
 jobs:
   keepalive:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Wake Supabase
+      - name: Wake Supabase - Proyecto 1 (Señales)
         run: |
-          curl -I "https://mkrrywqfkteijmhvfqtf.supabase.co" \
+          curl -I "https://mkrrywqfkteijmhvfqtf.supabase.co/rest/v1/senales?limit=1" \
           -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rcnJ5d3Fma3RlaWptaHZmcXRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MzgwODYsImV4cCI6MjA3MDQxNDA4Nn0.XxCKt8DLGaZBvlZOvmsRzS-0f28QrXFqqm530-0rJNg"
 
+      - name: Wake Supabase - Proyecto 2 (Buscador SAP)
+        run: |
+          curl -I "https://mkrrywqfkteijmhvfqtf.supabase.co/rest/v1/sap?limit=1" \
+          -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rcnJ5d3Fma3RlaWptaHZmcXRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MzgwODYsImV4cCI6MjA3MDQxNDA4Nn0.XxCKt8DLGaZBvlZOvmsRzS-0f28QrXFqqm530-0rJNg"
